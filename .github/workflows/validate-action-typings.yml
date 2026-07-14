@@ -11,5 +11,10 @@ jobs:
   validate-typings:
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: actions/checkout@v7
-      - uses: typesafegithub/github-actions-typing@v2
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: typesafegithub/github-actions-typing@9ddf35b71a482be7d8922b28e8d00df16b77e315 # v2.2.2
