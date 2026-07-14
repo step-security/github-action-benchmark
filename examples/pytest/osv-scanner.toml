@@ -1,0 +1,7 @@
+[[IgnoredVulns]]
+id = "PYSEC-2026-1845"
+reason = "pytest@5.2.4 is only used in this example, not a production dependency"
+
+[[IgnoredVulns]]
+id = "GHSA-6w46-j5rx-g56g"
+reason = "pytest@5.2.4 is only used in this example, not a production dependency"
