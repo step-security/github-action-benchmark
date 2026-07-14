@@ -6,3 +6,5 @@ dist
 images/
 LICENSE
 .claude/
+.github/
+.pre-commit-config.yaml
