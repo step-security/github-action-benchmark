@@ -1,0 +1,36 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: nuget
+    directory: /examples/benchmarkdotnet
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /examples/benchmarkjs
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /examples/go
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /examples/pytest
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /examples/java
+    schedule:
+      interval: daily
