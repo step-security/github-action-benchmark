@@ -1,7 +1,7 @@
 Go example for benchmarking with `go test -bench`
 =================================================
 
-- [Workflow for this example](../../.github/workflows/go.yml)
+- [Workflow for this example](../workflows/go.yml)
 
 This directory shows how to use [`github-action-benchmark`](https://github.com/step-security/github-action-benchmark)
 with `go test -bench` command.

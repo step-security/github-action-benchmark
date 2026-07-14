@@ -1,7 +1,7 @@
 Python example for benchmarking with [pytest-benchmark][tool]
 =============================================================
 
-- [Workflow for this example](../../.github/workflows/pytest.yml)
+- [Workflow for this example](../workflows/pytest.yml)
 
 This directory shows how to use [`github-action-benchmark`](https://github.com/step-security/github-action-benchmark)
 with [pytest-benchmark][tool].

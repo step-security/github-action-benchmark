@@ -178,7 +178,7 @@ exceeding 200% threshold. For example, if the previous benchmark result was 100 
 it is 230 iter/ns, it means 230% worse than the previous and an alert will happen. The threshold can
 be changed by `alert-threshold` input.
 
-A live workflow example is [here](.github/workflows/minimal.yml).
+A live workflow example is [here](examples/workflows/minimal.yml).
 
 ### Commit comment
 

@@ -1,7 +1,7 @@
 JavaScript example for benchmarking with [benchmark.js][tool]
 =============================================================
 
-- [Workflow for this example](../../.github/workflows/benchmarkjs.yml)
+- [Workflow for this example](../workflows/benchmarkjs.yml)
 
 This directory shows how to use [`github-action-benchmark`](https://github.com/step-security/github-action-benchmark)
 with [benchmark.js][tool].

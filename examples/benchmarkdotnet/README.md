@@ -1,7 +1,7 @@
 C# example for benchmarking with `Benchmark.Net`
 ================================================
 
-- [Workflow for this example](../../.github/workflows/benchmarkdotnet.yml)
+- [Workflow for this example](../workflows/benchmarkdotnet.yml)
 
 This directory shows how to use [`github-action-benchmark`](https://github.com/step-security/github-action-benchmark)
 with [`BenchmarkDotNet`](https://benchmarkdotnet.org/).

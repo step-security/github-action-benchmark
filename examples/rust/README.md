@@ -1,7 +1,7 @@
 Rust example for benchmarking with `cargo bench`
 ================================================
 
-- [Workflow for this example](../../.github/workflows/rust.yml)
+- [Workflow for this example](../workflows/rust.yml)
 
 This directory shows how to use [`github-action-benchmark`](https://github.com/step-security/github-action-benchmark)
 with [`cargo bench`](https://doc.rust-lang.org/cargo/commands/cargo-bench.html).

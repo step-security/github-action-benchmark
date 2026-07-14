@@ -1,7 +1,7 @@
 C++ example for benchmarking with [Google Benchmark Framework][tool]
 ====================================================================
 
-- [Workflow for this example](../../.github/workflows/cpp.yml)
+- [Workflow for this example](../workflows/cpp.yml)
 
 This directory shows how to use [`github-action-benchmark`][action] with [Google Benchmark Framework][tool].
 
