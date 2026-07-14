@@ -1,0 +1,17 @@
+/node_modules
+/examples/rust/Cargo.lock
+/examples/rust/target
+/examples/criterion-rs/Cargo.lock
+/examples/criterion-rs/target
+/examples/benchmarkdotnet/bin
+/examples/benchmarkdotnet/obj
+/examples/benchmarkdotnet/BenchmarkDotNet.Artifacts
+/.nyc_output
+/coverage
+/.idea
+/.ai
+target/
+jmh-result.json
+.env
+*.local
+*.local.*
