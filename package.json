@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@types/acorn": "^4.0.5",
-    "@types/cheerio": "^0.22.16",
+    "@types/cheerio": "^1.0.0",
     "@types/deep-diff": "^1.0.0",
     "@types/deep-equal": "^1.0.1",
     "@types/jest": "^29.5.11",
@@ -52,7 +52,7 @@
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "acorn": "^7.1.1",
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "^1.2.0",
     "dedent": "^1.5.1",
     "deep-diff": "^1.0.2",
     "deep-equal": "^2.0.1",
