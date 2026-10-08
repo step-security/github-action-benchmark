@@ -44,7 +44,7 @@ async function storeDataJs(dataPath: string, data: DataJson) {
     core.debug(`Overwrote ${dataPath} for adding new data`);
 }
 
-async function addIndexHtmlIfNeeded(additionalGitArguments: string[], dir: string, baseDir: string) {
+export async function addIndexHtmlIfNeeded(additionalGitArguments: string[], dir: string, baseDir: string) {
     const indexHtmlRelativePath = path.join(dir, 'index.html');
     const indexHtmlFullPath = path.join(baseDir, indexHtmlRelativePath);
     try {
@@ -367,12 +367,23 @@ async function writeBenchmarkToGitHubPagesWithRetry(
 
     if (githubToken && !skipFetchGhPages && ghRepository) {
         benchmarkBaseDir = './benchmark-data-repository';
-        await git.clone(githubToken, ghRepository, benchmarkBaseDir);
+        // Shallow, single-branch clone: only the tip of the pages branch is needed. Full clones of large
+        // repositories can take 20+ minutes and widen the window for push contention with other runs.
+        await git.clone(
+            githubToken,
+            ghRepository,
+            benchmarkBaseDir,
+            [],
+            '--branch',
+            ghPagesBranch,
+            '--single-branch',
+            '--depth',
+            '1',
+        );
         rollbackActions.push(async () => {
             await io.rmRF(benchmarkBaseDir);
         });
         extraGitArguments = [`--work-tree=${benchmarkBaseDir}`, `--git-dir=${benchmarkBaseDir}/.git`];
-        await git.checkout(ghPagesBranch, extraGitArguments);
     } else if (!skipFetchGhPages && (!isPrivateRepo || githubToken)) {
         await git.pull(githubToken, ghPagesBranch);
     } else if (isPrivateRepo && !skipFetchGhPages) {
