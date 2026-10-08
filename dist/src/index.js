@@ -65808,7 +65808,6 @@ exports.push = push;
 exports.pull = pull;
 exports.fetch = fetch;
 exports.clone = clone;
-exports.checkout = checkout;
 const exec_1 = __nccwpck_require__(5236);
 const core = __importStar(__nccwpck_require__(7484));
 const github = __importStar(__nccwpck_require__(3228));
@@ -65912,14 +65911,6 @@ async function clone(token, ghRepository, baseDirectory, additionalGitOptions = 
     core.debug(`Executing 'git clone' to directory '${baseDirectory}' with token and options '${options.join(' ')}'`);
     const remote = getRepoRemoteUrl(token, ghRepository);
     let args = ['clone', remote, baseDirectory];
-    if (options.length > 0) {
-        args = args.concat(options);
-    }
-    return cmd(additionalGitOptions, ...args);
-}
-async function checkout(ghRef, additionalGitOptions = [], ...options) {
-    core.debug(`Executing 'git checkout' to ref '${ghRef}' with token and options '${options.join(' ')}'`);
-    let args = ['checkout', ghRef];
     if (options.length > 0) {
         args = args.concat(options);
     }
@@ -66208,6 +66199,7 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SCRIPT_PREFIX = void 0;
+exports.addIndexHtmlIfNeeded = addIndexHtmlIfNeeded;
 exports.buildComment = buildComment;
 exports.writeBenchmark = writeBenchmark;
 const fs_1 = __nccwpck_require__(9896);
@@ -66482,12 +66474,13 @@ async function writeBenchmarkToGitHubPagesWithRetry(bench, config, retry) {
     let extraGitArguments = [];
     if (githubToken && !skipFetchGhPages && ghRepository) {
         benchmarkBaseDir = './benchmark-data-repository';
-        await git.clone(githubToken, ghRepository, benchmarkBaseDir);
+        // Shallow, single-branch clone: only the tip of the pages branch is needed. Full clones of large
+        // repositories can take 20+ minutes and widen the window for push contention with other runs.
+        await git.clone(githubToken, ghRepository, benchmarkBaseDir, [], '--branch', ghPagesBranch, '--single-branch', '--depth', '1');
         rollbackActions.push(async () => {
             await io.rmRF(benchmarkBaseDir);
         });
         extraGitArguments = [`--work-tree=${benchmarkBaseDir}`, `--git-dir=${benchmarkBaseDir}/.git`];
-        await git.checkout(ghPagesBranch, extraGitArguments);
     }
     else if (!skipFetchGhPages && (!isPrivateRepo || githubToken)) {
         await git.pull(githubToken, ghPagesBranch);
