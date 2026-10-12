@@ -19,8 +19,9 @@ export async function findExistingPRReviewId(
         pull_number: pullRequestNumber,
     });
 
-    const existingReview = existingReviewsResponse.data.find((review) =>
-        review.body.startsWith(benchmarkStartTag(benchName)),
+    const existingReview = existingReviewsResponse.data.find(
+        (review: (typeof existingReviewsResponse)['data'][number]) =>
+            review.body?.startsWith(benchmarkStartTag(benchName)),
     );
 
     core.debug('findExistingPRReviewId start');

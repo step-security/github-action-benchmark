@@ -1,6 +1,8 @@
 import dedent from 'dedent';
 import { extractGoResult } from '../src/extract';
 
+jest.mock('@actions/github', () => ({}));
+
 describe('extractGoResult()', () => {
     describe('basic benchmark extraction', () => {
         it('extracts a simple benchmark result', () => {
